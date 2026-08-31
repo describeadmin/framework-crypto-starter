@@ -2,6 +2,7 @@ package io.github.describeadmin.crypto.core;
 
 import com.baomidou.mybatisplus.core.toolkit.Constants;
 import io.github.describeadmin.crypto.api.BlindIndex;
+import org.apache.ibatis.binding.MapperMethod;
 import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.mapping.MappedStatement;
 import org.apache.ibatis.mapping.SqlCommandType;
@@ -131,6 +132,21 @@ class BlindIndexInnerInterceptorTest {
             paramMap.put("something-else", "value");
             interceptor.beforeUpdate(executor, updateStatement, paramMap);
             // 未抛异常即通过
+        }
+
+        @Test
+        @DisplayName("MyBatis 的 ParamMap（无 \"et\" 键）安全空转——它的 get() 键缺失时抛 BindingException，必须先 containsKey")
+        void mybatisParamMapWithoutEntityKeyIsSafeNoop() throws Exception {
+            // 自定义 @Update("... where id in (#{roleIds})") 这类多命名参数方法，
+            // MyBatis 包装成 MapperMethod.ParamMap，没有 "et" 键。普通 HashMap.get()
+            // 返回 null，但 ParamMap.get() 覆写成键不存在即抛 BindingException。
+            MapperMethod.ParamMap<Object> paramMap = new MapperMethod.ParamMap<>();
+            paramMap.put("roleIds", List.of(1L, 2L));
+            paramMap.put("userId", 100L);
+            paramMap.put("param1", List.of(1L, 2L));
+            paramMap.put("param2", 100L);
+            interceptor.beforeUpdate(executor, updateStatement, paramMap);
+            // 未抛异常即通过（回归：修复前这里抛 BindingException: Parameter 'et' not found）
         }
 
         @Test

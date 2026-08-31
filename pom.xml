@@ -19,7 +19,7 @@
 
   <groupId>io.github.describeadmin</groupId>
   <artifactId>framework-crypto-starter</artifactId>
-  <version>0.1.0-SNAPSHOT</version>
+  <version>0.2.0</version>
   <packaging>jar</packaging>
 
   <name>describeadmin :: framework-crypto-starter</name>
@@ -63,7 +63,7 @@
       那个常量是运行期自检读的，这个属性是构建期解析用的，两者说的是同一件事。
       插件自身版本号（上面的 <version>）与它【不联动】。
     -->
-    <describeadmin.version>0.2.0-SNAPSHOT</describeadmin.version>
+    <describeadmin.version>0.2.0</describeadmin.version>
 
     <!--
       SM4-GCM/HmacSM3 需要 Bouncy Castle 提供 JCE Provider（标准 OpenJDK 不自带 SM4）。

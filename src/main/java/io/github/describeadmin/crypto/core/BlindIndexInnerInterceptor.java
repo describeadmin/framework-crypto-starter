@@ -93,12 +93,20 @@ public class BlindIndexInnerInterceptor implements InnerInterceptor {
      * @return {@code parameter} 是 {@code Map}（MyBatis 对多参数方法的包装，键为
      *         {@link Constants#ENTITY}，即 {@code "et"}）时取出真正的实体；单参数方法
      *         （{@code insert(T)}/{@code updateById(T)}）直接透传，{@code parameter} 本身
-     *         就是实体；既不是 Map 也不含 "et" 键（如 {@code deleteById(Long)} 这类非实体参数）
+     *         就是实体；既不是 Map 也不含 "et" 键（如 {@code deleteById(Long)}、或
+     *         {@code @Update("... where id in (#{ids})")} 这类多命名参数的自定义方法）
      *         时返回 {@code null}，安全空转
+     *
+     * <p>⚠️ 必须先 {@code containsKey} 再 {@code get}：MyBatis 的
+     * {@code MapperMethod.ParamMap} 覆写了 {@code get()}，键不存在时<b>抛
+     * {@code BindingException}</b> 而不是返回 {@code null}。任何带命名参数、又没有 "et"
+     * 键的自定义 mapper 方法（{@code updateXxx(@Param("a") ..., @Param("b") ...)}）
+     * 走到这里，直接 {@code get("et")} 会把整个应用打挂——即便实体上一个
+     * {@code @BlindIndex} 都没有，本拦截器也会在每条 UPDATE 前被调到。
      */
     private static Object resolveEntity(Object parameter) {
         if (parameter instanceof Map<?, ?> map) {
-            return map.get(Constants.ENTITY);
+            return map.containsKey(Constants.ENTITY) ? map.get(Constants.ENTITY) : null;
         }
         return parameter;
     }

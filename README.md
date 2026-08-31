@@ -18,7 +18,7 @@ MyBatis-Plus 透明加解密（`TypeHandler`）+ 盲索引自动填充（精确�
 <dependency>
   <groupId>io.github.describeadmin</groupId>
   <artifactId>framework-crypto-starter</artifactId>
-  <version>0.1.0-SNAPSHOT</version> <!-- 未发布到 Central 前需显式版本号，framework-bom 不仲裁插件版本 -->
+  <version>0.2.0</version> <!-- framework-bom 不仲裁插件版本，需显式写版本号 -->
 </dependency>
 
 <!-- 只用 AES 到此为止即可。要用 SM4-GCM，额外加这一条——不加则 SM4 相关能力不装配，
