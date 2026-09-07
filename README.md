@@ -185,3 +185,14 @@ mvn test -Dmysql.image=mysql:8.4      # 8.4-LTS
   盲索引精确查询、partial update 不覆盖已有密文/索引列——这几条都是"单元测试自己加密自己
   解密"测不出来的真实 JDBC 往返行为，包括 `autoResultMap = true` 这条边界本身就是在这一层
   被发现并验证的。
+
+
+## 相关文档
+
+- 插件准入规范与目录：docs 仓 `registry.md`
+- 编码规范：docs 仓 `CLAUDE.md`（各子仓不再放副本，开发时把本仓与 `docs` 仓并列检出）
+- 发布步骤：docs 仓 `RELEASE.md`——发到 Maven Central 的版本不可撤回、不可覆盖
+
+## License
+
+Apache License 2.0
