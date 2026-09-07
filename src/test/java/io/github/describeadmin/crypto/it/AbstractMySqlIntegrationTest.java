@@ -7,7 +7,7 @@ import org.testcontainers.containers.MySQLContainer;
 import org.testcontainers.utility.DockerImageName;
 
 /**
- * 集成测试基类：拉起真实 MySQL 容器，风格照抄 {@code sample-app} 的同名类。
+ * 集成测试基类：拉起真实 MySQL 容器，风格照抄 framework 仓 framework-it 的同名类。
  *
  * <pre>
  *   mvn test                              # 默认 mysql:5.7
