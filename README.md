@@ -9,8 +9,8 @@ MyBatis-Plus 透明加解密（`TypeHandler`）+ 盲索引自动填充（精确�
 **不修改框架任何功能**，`sys_user.mobile`/`sys_user.email` 等核心字段维持明文现状——
 本插件只服务业务方自己的实体，框架核心零改动即可挂上（见下方"零框架核心改动"）。
 
-适配框架最低版本：**0.2.0**（见 `FrameworkCryptoAutoConfiguration.REQUIRED_FRAMEWORK_VERSION`，
-用到了 0.2.0 才开放给外部模块的 `ObjectProvider<InnerInterceptor>` 扩展点）。
+适配框架最低版本：**1.0.0**（见 `FrameworkCryptoAutoConfiguration.REQUIRED_FRAMEWORK_VERSION`，
+第一个正式版，0.x 不做兼容；用到开放给外部模块的 `ObjectProvider<InnerInterceptor>` 扩展点）。
 
 ## 引入
 
@@ -18,7 +18,7 @@ MyBatis-Plus 透明加解密（`TypeHandler`）+ 盲索引自动填充（精确�
 <dependency>
   <groupId>io.github.describeadmin</groupId>
   <artifactId>framework-crypto-starter</artifactId>
-  <version>0.2.0</version> <!-- framework-bom 不仲裁插件版本，需显式写版本号 -->
+  <version>1.0.0</version> <!-- framework-bom 不仲裁插件版本，需显式写版本号 -->
 </dependency>
 
 <!-- 只用 AES 到此为止即可。要用 SM4-GCM，额外加这一条——不加则 SM4 相关能力不装配，

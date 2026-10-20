@@ -45,8 +45,8 @@ import java.util.List;
 @EnableConfigurationProperties(FrameworkCryptoProperties.class)
 public class FrameworkCryptoAutoConfiguration {
 
-    /** 本插件要求的最低框架版本：用到 0.2.0 才开放给外部模块的 {@code ObjectProvider<InnerInterceptor>} 扩展点。 */
-    public static final String REQUIRED_FRAMEWORK_VERSION = "0.2.0";
+    /** 本插件要求的最低框架版本：1.0.0 是第一个正式版（0.x 不做兼容）；用到开放给外部模块的 {@code ObjectProvider<InnerInterceptor>} 扩展点。 */
+    public static final String REQUIRED_FRAMEWORK_VERSION = "1.0.0";
 
     public FrameworkCryptoAutoConfiguration() {
         // 放在构造函数里：条件都满足、真的要装配本插件时才检查，插件未激活时不因版本不匹配把应用打死。
