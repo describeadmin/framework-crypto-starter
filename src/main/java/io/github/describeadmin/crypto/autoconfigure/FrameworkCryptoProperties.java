@@ -54,6 +54,7 @@ public class FrameworkCryptoProperties {
     /** AES-256-GCM，JDK 原生、默认必定可用。 */
     public static class Aes {
 
+        /** 是否注册 AES-256-GCM 实现。开启时必须配置 {@code key} 与 {@code blind-index-key}。 */
         private boolean enabled = true;
 
         /** Base64 编码，解码后必须是 32 字节（256 位）。未设置时 Bean 创建期直接失败。 */
@@ -90,6 +91,7 @@ public class FrameworkCryptoProperties {
     /** SM4-GCM + HmacSM3，仅当 classpath 上有 Bouncy Castle 时才会真正装配。 */
     public static class Sm4 {
 
+        /** 是否注册 SM4-GCM 实现。classpath 上没有 Bouncy Castle 时，即使开启也不会装配。 */
         private boolean enabled = true;
 
         /** Base64 编码，解码后必须是 16 字节（128 位）。 */
@@ -126,6 +128,7 @@ public class FrameworkCryptoProperties {
     /** 盲索引自动填充（{@code @BlindIndex}），可以单独关闭而不影响加解密本身。 */
     public static class BlindIndexConfig {
 
+        /** 是否在写入时自动填充 {@code @BlindIndex} 字段。关闭后加解密照常，盲索引列需自行维护。 */
         private boolean enabled = true;
 
         public boolean isEnabled() {

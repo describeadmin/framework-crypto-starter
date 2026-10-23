@@ -64,7 +64,7 @@ public class FrameworkCryptoAutoConfiguration {
      * 引用 {@code BouncyCastleProvider}/{@code Sm4CryptoProvider} 类型的 {@code @Bean} 方法必须放进
      * 带 {@code @ConditionalOnClass} 的<b>嵌套配置类</b>——条件在类上时 Spring 用 ASM 读注解，
      * 不会提前触发方法签名里的类加载；写在外层方法签名上，BC 不在 classpath 时会直接类加载失败，
-     * 而不是被条件优雅地跳过（registry.md 准入规范第 3 条对应的写法）。
+     * 而不是被条件优雅地跳过（docs/site/dev/plugin-dev.md 第 3 条对应的写法）。
      */
     @Configuration(proxyBeanMethods = false)
     @ConditionalOnClass(name = "org.bouncycastle.jce.provider.BouncyCastleProvider")

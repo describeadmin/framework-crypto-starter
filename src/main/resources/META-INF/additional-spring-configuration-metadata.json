@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "describeadmin.crypto.default-algorithm",
+      "defaultValue": "AES256-GCM"
+    }
+  ]
+}
