@@ -1,6 +1,9 @@
 # framework-crypto-starter
 
-![Describe Admin](./assets/logo-text.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/logo-text.svg">
+  <img alt="Describe Admin" src="./assets/logo-text-light.svg">
+</picture>
 
 describeadmin 的可选插件。业务实体敏感字段的加密存储：MyBatis-Plus 透明加解密、盲索引精确查询、手动加解密门面。内置 AES-256-GCM 与国密 SM4-GCM。
 
