@@ -1,5 +1,7 @@
 # framework-crypto-starter
 
+![Describe Admin](./assets/logo-text.svg)
+
 describeadmin 的可选插件。业务实体敏感字段的加密存储：MyBatis-Plus 透明加解密、盲索引精确查询、手动加解密门面。内置 AES-256-GCM 与国密 SM4-GCM。
 
 **文档：[https://describeadmin.github.io/docs/how-to/crypto](https://describeadmin.github.io/docs/how-to/crypto)**，全部配置项见 [插件配置](https://describeadmin.github.io/docs/reference/configuration/plugins)。
